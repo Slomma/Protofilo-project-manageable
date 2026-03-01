@@ -32,4 +32,24 @@
                                                                                                                                                                                           response.style.color = "red";
                                                                                                                                                                                                   response.textContent = "Please fill in your name and email.";
                                                                                                                                                                                                       }
-                                                                                                                                                                                                      });
+                                                                                                                                                                                                      });   
+
+
+
+
+// Initialize EmailJS
+emailjs.init("YOUR_USER_ID");
+
+// Send subscription email
+emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+    to_email: "Islam900001@gmail.com",
+    from_name: name,
+    from_email: email,
+    message: `New course subscription from ${name} (${email}). The course will start soon.`
+})
+.then(function() {
+    // Confirmation message for user
+    console.log(`Thank you ${name}! Your subscription has been received. The course will start soon.`);
+}, function(error) {
+    console.error("Oops! Something went wrong:", error);
+});
